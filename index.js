@@ -29,7 +29,7 @@ client.on("message", function(message) {
           type: 'ogg/opus',
         });
 
-        dispatcher.on("end", end => {VC.leave()});
+        dispatcher.on("end", end => {connection.leave()});
       })
   }
 
@@ -45,7 +45,7 @@ client.on("message", function(message) {
           type: 'ogg/opus',
         });
 
-        dispatcher.on("end", end => {VC.leave()});
+        dispatcher.on("end", end => {connection.leave()});
     })
   }
 
