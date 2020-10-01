@@ -3,19 +3,17 @@ const config = require("./config.json");
 const client = new Discord.Client();
 const fs = require('fs')
 
-// const prefix = "!";
+const prefix = "!";
 
 client.on("message", function(message) {
-  // if (message.author.bot) return;
-  // if (!message.content.startsWith(prefix)) return;
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
 
-  // const commandBody = message.content.slice(prefix.length);
-  // const args = commandBody.split(' ');
-  // const command = args.shift().toLowerCase();
+  const commandBody = message.content.slice(prefix.length);
+  const args = commandBody.split(' ');
+  const command = args.shift().toLowerCase();
 
-  const command = message.content;
-
-  if (command === "mute" || "mm") {
+  if (command === "mute" || "m") {
       message.channel.send('SHHHHH!')
 
       const channel = message.guild.channels.cache.get(message.member.voice.channel.id);
@@ -35,7 +33,7 @@ client.on("message", function(message) {
       })
   }
 
-  if (command === 'talk' || command == 'tt') {
+  if (command === 'talk' || command == 't') {
     message.channel.send('You can talk now!')
     const channel = message.guild.channels.cache.get(message.member.voice.channel.id);
       for (const [memberID, member] of channel.members) {
