@@ -25,11 +25,11 @@ client.on("message", function(message) {
       }
 
       channel.join().then(connection => {
-        const dispatcher =  connection.play(fs.createReadStream('./beep.opus'), {
+        connection.play(fs.createReadStream('./beep.opus'), {
           type: 'ogg/opus',
+        }).on("end", end => { 
+          console.log('!!'); channel.leave() 
         });
-
-        dispatcher.on("end", end => { console.log('!!'); channel.leave() });
       })
   }
 
@@ -41,11 +41,11 @@ client.on("message", function(message) {
         member.voice.setMute(false);
       }
       channel.join().then(connection => {
-        const dispatcher =  connection.play(fs.createReadStream('./beep.opus'), {
+        connection.play(fs.createReadStream('./beep.opus'), {
           type: 'ogg/opus',
+        }).on("end", end => { 
+          channel.leave() 
         });
-
-        dispatcher.on("end", end => { channel.leave() });
     })
   }
 });
