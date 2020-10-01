@@ -13,7 +13,7 @@ client.on("message", function(message) {
   const args = commandBody.split(' ');
   const command = args.shift().toLowerCase();
 
-  if (command === "mute" || "m") {
+  if (command === "mute") {
       message.channel.send('SHHHHH!')
 
       const channel = message.guild.channels.cache.get(message.member.voice.channel.id);
@@ -33,7 +33,7 @@ client.on("message", function(message) {
       })
   }
 
-  if (command === 'talk' || command == 't') {
+  if (command === 'talk') {
     message.channel.send('You can talk now!')
     const channel = message.guild.channels.cache.get(message.member.voice.channel.id);
       for (const [memberID, member] of channel.members) {
@@ -47,6 +47,12 @@ client.on("message", function(message) {
 
         dispatcher.on("end", end => {VC.leave()});
     })
+  }
+
+  else if (command === "sum") {
+    const numArgs = args.map(x => parseFloat(x));
+    const sum = numArgs.reduce((counter, x) => counter += x);
+    message.reply(`The sum of all the arguments you provided is ${sum}!`);
   }
 });
 
