@@ -1,21 +1,21 @@
 const Discord = require("discord.js");
 const config = require("./config.json");
-const ffmpeg = require("ffmpeg")
-const ytdl = require('ytdl-core');
 const client = new Discord.Client();
 const fs = require('fs')
 
-const prefix = "!";
+// const prefix = "!";
 
 client.on("message", function(message) {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
+  // if (message.author.bot) return;
+  // if (!message.content.startsWith(prefix)) return;
 
-  const commandBody = message.content.slice(prefix.length);
-  const args = commandBody.split(' ');
-  const command = args.shift().toLowerCase();
+  // const commandBody = message.content.slice(prefix.length);
+  // const args = commandBody.split(' ');
+  // const command = args.shift().toLowerCase();
 
-  if (command === "mute") {
+  const command = message.content;
+
+  if (command === "mute" || "mm") {
       message.channel.send('SHHHHH!')
 
       const channel = message.guild.channels.cache.get(message.member.voice.channel.id);
@@ -35,7 +35,7 @@ client.on("message", function(message) {
       })
   }
 
-  if (command === 'unmute') {
+  if (command === 'talk' || command == 'tt') {
     message.channel.send('You can talk now!')
     const channel = message.guild.channels.cache.get(message.member.voice.channel.id);
       for (const [memberID, member] of channel.members) {
@@ -49,12 +49,6 @@ client.on("message", function(message) {
 
         dispatcher.on("end", end => {VC.leave()});
     })
-  }
-
-  else if (command === "sum") {
-    const numArgs = args.map(x => parseFloat(x));
-    const sum = numArgs.reduce((counter, x) => counter += x);
-    message.reply(`The sum of all the arguments you provided is ${sum}!`);
   }
 });
 
