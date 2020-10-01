@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const config = require("./config.json");
 const client = new Discord.Client();
-const fs = require('fs')
+const fs = require('fs');
 
 const prefix = "!";
 
@@ -29,7 +29,7 @@ client.on("message", function(message) {
           type: 'ogg/opus',
         });
 
-        dispatcher.on("end", end => {connection.leave()});
+        dispatcher.on("end", end => { channel.leave() });
       })
   }
 
@@ -45,14 +45,8 @@ client.on("message", function(message) {
           type: 'ogg/opus',
         });
 
-        dispatcher.on("end", end => {connection.leave()});
+        dispatcher.on("end", end => { channel.leave() });
     })
-  }
-
-  else if (command === "sum") {
-    const numArgs = args.map(x => parseFloat(x));
-    const sum = numArgs.reduce((counter, x) => counter += x);
-    message.reply(`The sum of all the arguments you provided is ${sum}!`);
   }
 });
 
