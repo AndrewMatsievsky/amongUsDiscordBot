@@ -27,7 +27,7 @@ client.on("message", function(message) {
       channel.join().then(connection => {
         connection.play(fs.createReadStream('./beep.opus'), {
           type: 'ogg/opus',
-        }).on("end", end => { 
+        }).then(end => { 
           console.log('!!'); channel.leave() 
         });
       })
