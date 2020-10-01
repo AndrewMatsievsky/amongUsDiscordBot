@@ -14,7 +14,7 @@ client.on("message", function(message) {
   const command = args.shift().toLowerCase();
 
   if (command === "mute") {
-      message.channel.send('SHHHHH!')
+      message.channel.send('SHHHHHHH!')
 
       const channel = message.guild.channels.cache.get(message.member.voice.channel.id);
 
