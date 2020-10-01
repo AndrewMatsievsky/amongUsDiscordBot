@@ -21,14 +21,15 @@ client.on("message", function(message) {
       const channel = message.guild.channels.cache.get(message.member.voice.channel.id);
 
       for (const [memberID, member] of channel.members) {
-        member.voice.setMute(true);
+        if (member.user.username !== 'MuteVoiceForEveryOne') {
+          member.voice.setMute(true);
+        }
       }
 
       channel.join().then(connection => {
         const dispatcher =  connection.play(fs.createReadStream('./beep.opus'), {
           type: 'ogg/opus',
         });
-        console.log(connection)
 
         dispatcher.on("end", end => {VC.leave()});
       })
