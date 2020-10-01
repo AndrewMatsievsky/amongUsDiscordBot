@@ -29,7 +29,7 @@ client.on("message", function(message) {
           type: 'ogg/opus',
         });
 
-        dispatcher.on("end", end => { channel.leave() });
+        dispatcher.on("end", end => { console.log('!!'); channel.leave() });
       })
   }
 
