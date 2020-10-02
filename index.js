@@ -25,7 +25,7 @@ client.on("message", function(message) {
       }
 
       channel.join().then(connection => {
-        connection.play(fs.createReadStream('./beep.opus'), {
+        connection.play(fs.createReadStream('./airplane_sound.opus'), {
           type: 'ogg/opus',
         })
       })
@@ -34,12 +34,12 @@ client.on("message", function(message) {
   if (command === 'talk') {
     message.channel.send('You can talk now!')
     const channel = message.guild.channels.cache.get(message.member.voice.channel.id);
-      for (const [memberID, member] of channel.members) {
+      for (const [member] of channel.members) {
 
         member.voice.setMute(false);
       }
       channel.join().then(connection => {
-        connection.play(fs.createReadStream('./beep.opus'), {
+        connection.play(fs.createReadStream('./airplane_sound.opus'), {
           type: 'ogg/opus',
         })
     })
