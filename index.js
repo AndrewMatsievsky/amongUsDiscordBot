@@ -34,7 +34,7 @@ client.on("message", function(message) {
   if (command === 'talk') {
     message.channel.send('You can talk now!')
     const channel = message.guild.channels.cache.get(message.member.voice.channel.id);
-      for (const [member] of channel.members) {
+      for (const [memberID, member] of channel.members) {
 
         member.voice.setMute(false);
       }
