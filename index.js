@@ -34,14 +34,22 @@ client.on("message", function(message) {
   if (command === 'talk') {
     message.channel.send('You can talk now!')
     const channel = message.guild.channels.cache.get(message.member.voice.channel.id);
-      for (const [memberID, member] of channel.members) {
 
-        member.voice.setMute(false);
-      }
-      channel.join().then(connection => {
-        connection.play(fs.createReadStream('./airplane_sound.opus'), {
-          type: 'ogg/opus',
-        })
+    // for (const [memberID, member] of channel.members) {
+
+    //   member.voice.setMute(false);
+    // }
+
+    channel.members.map(member => {
+      member.voice.setMute(false)
+    })
+
+    console.log(channel.members.map(el => el))
+    
+    channel.join().then(connection => {
+      connection.play(fs.createReadStream('./airplane_sound.opus'), {
+        type: 'ogg/opus',
+      })
     })
   }
 });
