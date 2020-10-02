@@ -3,7 +3,7 @@ const config = require("./config.json");
 const client = new Discord.Client();
 const fs = require('fs');
 
-const prefix = "!";
+const prefix = "/";
 
 client.on("message", function(message) {
   if (message.author.bot) return;
@@ -27,9 +27,7 @@ client.on("message", function(message) {
       channel.join().then(connection => {
         connection.play(fs.createReadStream('./beep.opus'), {
           type: 'ogg/opus',
-        }).then(end => { 
-          console.log('!!'); channel.leave() 
-        });
+        })
       })
   }
 
@@ -43,9 +41,7 @@ client.on("message", function(message) {
       channel.join().then(connection => {
         connection.play(fs.createReadStream('./beep.opus'), {
           type: 'ogg/opus',
-        }).on("end", end => { 
-          channel.leave() 
-        });
+        })
     })
   }
 });
