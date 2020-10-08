@@ -3,7 +3,7 @@ const config = require("./config.json");
 const client = new Discord.Client();
 const fs = require('fs');
 
-const WEBHOOK_BOT_ID ='760964374654746646'
+const WEBHOOK_BOT_ID ='761123170940878908'
 const WEBHOOK_READY_VOICE_ID = '659088565103493151'
 
 const prefix = "/";
