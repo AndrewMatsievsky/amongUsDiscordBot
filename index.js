@@ -6,7 +6,6 @@ const fs = require('fs');
 const prefix = "/";
 
 client.on("message", function(message) {
-  if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
 
   const commandBody = message.content.slice(prefix.length);
